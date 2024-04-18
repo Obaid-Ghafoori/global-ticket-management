@@ -1,9 +1,8 @@
-import Image from "next/image";
-import ItemList from "./src/components/itemList";
-import { getHolidayDestinationsData } from "./src/lib/util";
+import ItemList from "@/app/src/components/itemList";
+import { getHolidayDestinationsData } from "@/app/src/lib/util";
 
 export default async function Home() {
-  const retrieceData = await getHolidayDestinationsData();
+  const retrieveData = await getHolidayDestinationsData();
 
-  return <ItemList jsonData={retrieceData}></ItemList>;
+  return <ItemList jsonData={retrieveData} />;
 }

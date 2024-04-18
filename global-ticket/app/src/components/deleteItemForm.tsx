@@ -1,4 +1,4 @@
-import { deleteItem } from "../lib/actions";
+import { deleteItem } from "@/app/src/lib/actions";
 
 export default function DeleteButton({ id }: { id: number }) {
   const deleteItemById = deleteItem.bind(null, id);

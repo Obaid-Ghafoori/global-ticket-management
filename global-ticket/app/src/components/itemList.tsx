@@ -1,8 +1,8 @@
-import { HolidayDestinationItem as item } from "@/app/src/lib/util";
-import DeleteButton from "./deleteItemForm";
 import Link from "next/link";
+import { HolidayDestinationItem } from "@/app/src/lib/util";
+import DeleteButton from "@/app/src/components/deleteItemForm";
 
-export default function ItemList({ jsonData }: { jsonData: item[] }) {
+export default function ItemList({jsonData}: {jsonData: HolidayDestinationItem[]}) {
   return (
     <>
       {jsonData.map((item) => (
