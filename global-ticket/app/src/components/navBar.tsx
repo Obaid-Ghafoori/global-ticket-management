@@ -13,7 +13,12 @@ export default function NavBar() {
           height={100}
         />
       </Link>
-      <Link className="bg-slate-700 font-bold p-2 hover:bg-slate-500" href={'/addItem'}>Add Item</Link>
+      <Link
+        className="bg-slate-700 font-bold p-2 hover:bg-slate-500"
+        href={"/addItem"}
+      >
+        Add Item
+      </Link>
     </nav>
   );
 }
