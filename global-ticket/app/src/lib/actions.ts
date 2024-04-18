@@ -1,4 +1,4 @@
-'use server';
+"use server";
 import { promises as fs } from "fs";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
@@ -36,7 +36,7 @@ export async function createItem(formData: FormData) {
 export async function updateItem(index: number, formData: FormData) {
   const id = index + 1;
   const inputData: HolidayDestinationItem = {
-    id, // Add this line to include the 'id' in inputData
+    id,
     title: formData.get("title") as string,
     description: formData.get("description") as string,
   };
@@ -55,6 +55,7 @@ export async function updateItem(index: number, formData: FormData) {
     }
 
     console.log(JSON.stringify(database[index]));
+    
     await fs.writeFile(
       process.cwd() + "/app/lib/mockData.json",
       JSON.stringify(database)
