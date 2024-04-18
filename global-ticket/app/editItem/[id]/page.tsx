@@ -23,7 +23,7 @@ export default async function EditItem({ params }: { params: { id: string } }) {
     <form action={updateItemByIndex} className="flex flex-col gap-3">
       <p> Current title: {item.title}</p>
       <input
-        className="border border-teal-400 px-3 py-2"
+        className="border border-teal-400 px-3 py-2 text-black"
         name="title"
         type="text"
         placeholder="New item title"
@@ -32,7 +32,7 @@ export default async function EditItem({ params }: { params: { id: string } }) {
       <p> Current description: {item.description}</p>
 
       <input
-        className="border border-teal-400 px-3 py-2"
+        className="border border-teal-400 px-3 py-2 text-black"
         name="description"
         type="text"
         placeholder="New item description"

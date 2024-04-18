@@ -23,10 +23,10 @@ export async function createItem(formData: FormData) {
     database.push(newEntry);
 
     await fs.writeFile(
-      process.cwd() + "@/app/src/lib/mockData.json",
+      process.cwd() + "/app/src/lib/mockData.json",
       JSON.stringify(database)
     );
-    console.log("New item is successfully adeed");
+    console.log("New item is successfully added");
   } catch (error) {
     console.error("Error adding new data:, ${error}");
     throw new Error("Failed to add item");
@@ -38,17 +38,17 @@ export async function createItem(formData: FormData) {
 
 export async function updateItem(index: number, formData: FormData) {
   const inputData = {
-    title: formData.get("title") as string,
-    description: formData.get("description") as string,
+    title: formData.get("title"),
+    description: formData.get("description"),
   };
 
   try {
     if (inputData.title && inputData.title != "") {
-      database[index].title = inputData.title;
+      database[index].title = inputData.title.toString();
     }
 
     if (inputData.description && inputData.description != "") {
-      database[index].description = inputData.description;
+      database[index].description = inputData.description.toString();
     }
 
     console.log(JSON.stringify(database[index]));
@@ -70,23 +70,22 @@ export async function updateItem(index: number, formData: FormData) {
 export async function deleteItem(id: number) {
     const dataIndex = database.findIndex((item) => item.id == id);
     if (dataIndex == -1) {
-        console.log("Could not find an item with id ${id}");
-        return;
-      }
+      console.log("Could not find an item with id ${id}");
+      return;
+    }
 
-      database.splice(dataIndex!, 1);
-  
-  try {
-    await fs.writeFile(
-      process.cwd() + "/app/src/lib/mockData.json",
-      JSON.stringify(database)
-    );
-    console.log(`Item with id ${id} is successfully deleted!`);
+    database.splice(dataIndex!, 1);
 
-  } catch (error) {
-    console.error(`Error deleting data: ${error}`);
-    throw new Error("Failed to delete item");
-  }
-  revalidatePath("/");
-  redirect("/");
+    try {
+      await fs.writeFile(
+        process.cwd() + "/app/src/lib/mockData.json",
+        JSON.stringify(database)
+      );
+      console.log(`Item with id ${id} is successfully deleted!`);
+    } catch (error) {
+      console.error(`Error deleting data: ${error}`);
+      throw new Error("Failed to delete item");
+    }
+    revalidatePath("/");
+    redirect("/");
 }
